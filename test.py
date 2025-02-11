@@ -15,4 +15,3 @@ enroll = cl.get_liveschedule(acc_token, 202502, usercode)
 print(acc_token)
 print(appointment)
 print(enroll)
-#test

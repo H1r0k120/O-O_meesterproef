@@ -3,6 +3,7 @@ import pandas as pd
 import datetime
 from datetime import date
 from zermelo import Client
+import lln2atk.py
 
 today = date.today()
 

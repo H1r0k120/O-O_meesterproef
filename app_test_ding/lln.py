@@ -14,6 +14,8 @@ def right_CardID(cardID):
     """Formatteer de kaart-ID naar hexadecimaal"""
     return "%2X%2X%2X%2X%2X" % (cardID[0], cardID[1], cardID[2], cardID[3], cardID[4])
 
+
+'''
 def read_rfid():
     """Leest een RFID-kaart en geeft de ID en naam terug"""
     while True:
@@ -30,3 +32,7 @@ def read_rfid():
             return {"card_id": card_str, "student": student}
 
         time.sleep(1)  # Voorkomt CPU-overbelasting
+'''
+
+def read_rfid():
+    return "08078"

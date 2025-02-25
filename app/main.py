@@ -57,6 +57,4 @@ df = df.sort_values(by=["Sort Time"]).drop(columns=["Sort Time"])  # Sort & remo
 if df.empty:
     print("No appointments found.")
 else:
-    print(df.to_string(index=False))
-
-st.write(df)
+    print(df.to_json())

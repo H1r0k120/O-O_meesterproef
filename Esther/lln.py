@@ -15,7 +15,7 @@ import os
 mfrc = MFRC522.MFRC522()
 
 #Create database
-llnJSON =  '{"C3FBA9D140":"8060", "338F 0A71B":"Blauwe chip", "F31538 ED0":"Witte kaart", "None":"Datiskut"}'
+llnJSON =  '{"C3FBA9D140":"08060", "338F 0A71B":"Blauwe chip", "F31538 ED0":"Witte kaart", "None":"Datiskut", "F3E9ACD167":"08099", "54E7B74044":"08078", "3081AF 31D":"08153"}'
 
 #parse lln
 llnPy = json.loads(llnJSON)
@@ -71,11 +71,11 @@ def cmdloop(cardID):
 		
 		#dis_ConmandLine()
 		#dis_CardID(cardID)
-		x = str("%2X%2X%2X%2X%2X"%(cardID[0],cardID[1],cardID[2],cardID[3],cardID[4]))
+		lln = str("%2X%2X%2X%2X%2X"%(cardID[0],cardID[1],cardID[2],cardID[3],cardID[4]))
 		#declare lln
 		#lln = llnPy[x]
-		print (x)
-		print (llnPy[x])
+		print (lln)
+		print (llnPy[lln])
 		return 0.5
 		
 	

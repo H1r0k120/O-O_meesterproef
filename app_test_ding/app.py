@@ -5,9 +5,12 @@ import threading
 import time
 import lln
 from lln2atk import get_authenticationtoken
+import table
 
 app = Flask(__name__)
 socketio = SocketIO(app)
+
+previous_token = None
 
 @app.route("/")
 def index():
@@ -17,9 +20,14 @@ def rfid_loop():
     """Blijft RFID lezen en stuurt het via WebSockets naar de frontend"""
     while True:
         lln = lln.read_rfid()
+        global x
         atoken = get_authenticationtoken(lln)
+        if atoken and atoken != previous_token:
+            x = table.get_tabledata(atoken)
+            previous_token = atoken
         time.sleep(1)  # Vermijd overbelasting
 
+print(x)
 
 if __name__ == "__main__":
     # Start RFID in een aparte thread

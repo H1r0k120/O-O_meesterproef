@@ -3,7 +3,8 @@ from flask import Flask, render_template
 from flask_socketio import SocketIO
 import threading
 import time
-import lln  # Importeer de RFID-module
+import lln
+from lln2atk import get_authenticationtoken
 
 app = Flask(__name__)
 socketio = SocketIO(app)
@@ -15,10 +16,10 @@ def index():
 def rfid_loop():
     """Blijft RFID lezen en stuurt het via WebSockets naar de frontend"""
     while True:
-        data = rfid_reader.read_rfid()
-        if data:
-            socketio.emit("rfid_scan", data)  # Stuur de RFID-gegevens naar frontend
+        lln = lln.read_rfid()
+        atoken = get_authenticationtoken(lln)
         time.sleep(1)  # Vermijd overbelasting
+
 
 if __name__ == "__main__":
     # Start RFID in een aparte thread

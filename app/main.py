@@ -3,6 +3,7 @@ import pandas as pd
 import datetime
 from datetime import date
 from zermelo import Client
+from pathlib import Path
 import lln2atk.py
 
 today = date.today()
@@ -28,7 +29,7 @@ end_utime = to_unix_timestamp(edate_input, etime_input)
 cl = Client("keizerkarelcollege")
 
 # Use an existing access token
-acc_token = "8jcm5uhbpn9nogsl7kcickuaq1"  # Replace with a valid token
+acc_token = lln2atk.get_authenticationtoken()  # Replace with a valid token
 
 # Fetch appointments
 appointments = cl.get_appointments(acc_token, start_utime, end_utime)
@@ -58,4 +59,7 @@ df = df.sort_values(by=["Sort Time"]).drop(columns=["Sort Time"])  # Sort & remo
 if df.empty:
     print("No appointments found.")
 else:
-    print(df.to_json())
+    my_file = Path("/schedule.txt")
+    if my_file.is_file():
+        # file exists
+        print(df.to_json())

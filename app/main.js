@@ -7,9 +7,13 @@ Output = HTML tabel
 
 Check naar tijd, link de tijd met de relatieve index, krijg de info, link die naar de html dinges
 */
+let raw_table;
 
 
-const raw_table = loadStrings("schedule.txt")
+
+
+
+raw_table = fetch("./schedule.txt")
 
 
 console.log(raw_table)

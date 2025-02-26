@@ -14,6 +14,5 @@ let raw_table;
 
 
 raw_table = fetch("./schedule.txt")
-
-
+document.getElementById('demo').innerHTML = raw_table
 console.log(raw_table)

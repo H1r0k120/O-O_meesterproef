@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/templates/style.css" type="text/css">
+    <title>Home</title>
+</head>
+<body>
+    <table border="1" id="data-table">
+        <thead>
+            <tr>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Subject</th>
+                <th>Teacher</th>
+                <th>Location</th>
+            </tr>
+        </thead>
+        <tbody id="table-body"></tbody>
+    </table>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <script>
+        //var socket = io.connect("http://127.0.0.1:5000");
+        var socket = io();
+
+        socket.on("update_data", function(msg) {
+            console.log("Nieuwe data ontvangen:", msg);
+            let jsonData = JSON.parse(msg.data);
+            updateTable(jsonData)
+        });
+
+
+        function updateTable(data) {
+            let tableBody = document.getElementById("table-body");
+            tableBody.innerHTML = "";
+
+            
+            let numRows = Object.keys(data["Start Time"]).length;
+
+            for (let i = 0; i < numRows; i++) {
+                let row = document.createElement("tr");
+
+                row.innerHTML = `
+                    <td>${data["Start Time"][i]}</td>
+                    <td>${data["End Time"][i]}</td>
+                    <td>${data["Subject"][i]}</td>
+                    <td>${data["Teacher"][i]}</td>
+                    <td>${data["Location"][i]}</td>
+                `;
+
+                tableBody.appendChild(row);
+            }
+        }
+
+
+    </script>
+</body>
+</html>

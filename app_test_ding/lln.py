@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-import MFRC522
+#import MFRC522
 import json
 import time
 
 # RFID Scanner Setup
-mfrc = MFRC522.MFRC522()
+#mfrc = MFRC522.MFRC522()
 
 # RFID Database
 llnJSON = '{"C3FBA9D140":"08060", "338F0A71B":"Blauwe chip", "F31538ED0":"Witte kaart", "None":"Datiskut", "F3E9ACD167":"08099", "54E7B74044":"08078", "3081AF31D":"08153"}'
@@ -36,3 +36,4 @@ def read_rfid():
 
 def read_rfid():
     return "08078"
+

@@ -4,8 +4,10 @@ import datetime
 from datetime import date
 from zermelo import Client
 
+today = date.today()
+
 def get_tabledata(acc_token):
-    today = date.today()
+    #today = date.today()
 
     # Example Usage
     sdate_input = today.strftime("%Y-%m-%d")  # Example date

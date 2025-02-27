@@ -2,7 +2,7 @@ import sqlite3
 
 def get_authenticationtoken(llnum):
     try:
-        with sqlite3.connect('lln2at.db') as conn:
+        with sqlite3.connect('app_test_ding/lln2at.db') as conn:
             cur = conn.cursor()
             cur.execute('SELECT atoken FROM users WHERE lln =?', (llnum,))
             token = cur.fetchone()
@@ -10,6 +10,6 @@ def get_authenticationtoken(llnum):
     except sqlite3.OperationalError as e:
         return str(e)
 
-lln = "08099"
+lln = "08078"
 atoken = get_authenticationtoken(lln)
 print(atoken)

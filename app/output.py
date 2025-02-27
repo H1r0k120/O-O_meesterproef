@@ -10,7 +10,7 @@ html_template = """
 
 </head>
 <body>
-    <h1>Python Output:</h1>
+    <h1>Hallo, {{naam_lln}}</h1>
     <p>{{ output }}</p>
 </body>
 </html>

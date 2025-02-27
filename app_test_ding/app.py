@@ -31,8 +31,7 @@ def rfid_loop():
         if atoken and atoken != previous_token:
             x = get_tabledata(atoken)
             previous_token = atoken
-            print(x)
-            
+                    
             socketio.emit("update_data", {"schedule": x.to_json(orient="records")}) 
 
         time.sleep(1)

@@ -3,7 +3,12 @@ from jinja2 import Template
 html_template = """
 <!DOCTYPE html>
 <html>
-<head><title>Python Output</title></head>
+<head>
+<title>Jouw rooster</title>
+<link rel="stylesheet" href="stylesheet.css">
+
+
+</head>
 <body>
     <h1>Python Output:</h1>
     <p>{{ output }}</p>

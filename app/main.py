@@ -29,7 +29,7 @@ end_utime = to_unix_timestamp(edate_input, etime_input)
 cl = Client("keizerkarelcollege")
 
 # Use an existing access token
-acc_token = "taep3kdvq4fgo5ps8bbv5jjpcq"  # Replace with a valid token
+acc_token = "39jb2e0ab209d41vvgt9782fca"  # Replace with a valid token
 
 # Fetch appointments
 appointments = cl.get_appointments(acc_token, start_utime, end_utime)

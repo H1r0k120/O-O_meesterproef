@@ -52,7 +52,7 @@ def get_tabledata(acc_token):
     df["Sort Time"] = pd.to_datetime(today.strftime("%Y-%m-%d") + " " + df["Start Time"], format="%Y-%m-%d %H:%M")
     df = df.sort_values(by=["Sort Time"]).drop(columns=["Sort Time"]).reset_index(drop=True)  # Sort & remove helper column
 
-    # Display the Timetable
+    # Return the timetable
     if df.empty:
         return "No appointments found."
     else:

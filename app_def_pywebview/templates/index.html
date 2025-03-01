@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css" type="text/css">
+    <title>Schedule</title>
+</head>
+<body>
+    <center><button onclick="clearTable()">✖</button></center>
+
+    <table border="1" id="data-table">
+        <thead>
+            <tr>
+                <th>Begin</th>
+                <th>Eind</th>
+                <th>Vak</th>
+                <th>Docent</th>
+                <th>Locatie</th>
+            </tr>
+        </thead>
+        <tbody id="table-body"></tbody>
+    </table>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            console.log("[DEBUG] PyWebView frontend loaded.");
+
+            if (window.pywebview) {
+                console.log("[DEBUG] Requesting RFID loop from Python...");
+                window.pywebview.api.start_rfid_loop()
+                    .then(() => console.log("[DEBUG] start_rfid_loop() started successfully."))
+                    .catch(err => console.error("[ERROR] Could not start RFID loop:", err));
+            } else {
+                console.error("[ERROR] PyWebView API not available.");
+            }
+        });
+
+        function updateTable(data) {
+            console.log("[DEBUG] Updating table with new data:", data);
+
+            let tableBody = document.getElementById("table-body");
+            tableBody.innerHTML = "";
+
+            if (!Array.isArray(data) || data.length === 0) {
+                console.warn("[WARNING] No data received.");
+                return;
+            }
+
+            data.forEach(row => {
+                let tr = document.createElement("tr");
+                tr.innerHTML = `
+                    <td>${row["Start Time"] || "-"}</td>
+                    <td>${row["End Time"] || "-"}</td>
+                    <td>${row["Subject"] || "-"}</td>
+                    <td>${row["Teacher"] || "-"}</td>
+                    <td>${row["Location"] || "-"}</td>
+                `;
+                tableBody.appendChild(tr);
+            });
+        }
+
+        function clearTable() {
+            console.log("[DEBUG] Clearing table...");
+            document.getElementById("table-body").innerHTML = "";
+        }
+
+
+    </script>
+</body>
+</html>

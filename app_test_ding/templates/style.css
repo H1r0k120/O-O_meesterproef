@@ -61,3 +61,34 @@ th:last-child {
         font-size: 14px;
     }
 }
+
+button {
+    background-color: #6c757d; /* Subtle gray to match the table */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out, transform 0.2s;
+    margin-top: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px; /* Square button */
+    height: 50px;
+}
+
+button:hover {
+    background-color: #5a6268; /* Slightly darker gray */
+    transform: scale(1.05);
+}
+
+button:active {
+    background-color: #4e555b; /* Even darker gray */
+    transform: scale(0.98);
+}
+
+

@@ -7,6 +7,8 @@
     <title>Schedule</title>
 </head>
 <body>
+    <center><button onclick="clearTable()">✖</button></center>
+
     <table border="1" id="data-table">
         <thead>
             <tr>
@@ -52,6 +54,10 @@
 
                 tableBody.appendChild(row);
             }
+        }
+
+        function clearTable() {
+            document.getElementById("table-body").innerHTML = "";
         }
 
 

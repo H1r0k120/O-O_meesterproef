@@ -1,9 +1,7 @@
-import streamlit as st
 import pandas as pd
 import datetime
 from datetime import date
 from zermelo import Client
-from pathlib import Path
 
 def get_tabledata(acc_token):
 

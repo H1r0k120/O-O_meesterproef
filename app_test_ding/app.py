@@ -5,6 +5,7 @@ import threading
 from lln import read_rfid
 from lln2atk import get_authenticationtoken
 from table import get_tabledata
+import webbrowser
 
 app = Flask(__name__, static_folder='templates')
 socketio = SocketIO(app)
@@ -20,7 +21,7 @@ def index():
 def send_initial_data(auth=None):
     global x
     if not x.empty:
-        print("Eerste data versturen:", x.to_json())  # Debug
+        #print("Eerste data versturen:", x.to_json())  # Debug
         socketio.emit("update_data", {"data": x.to_json()}, to=None)
 
 def rfid_loop():
@@ -40,4 +41,5 @@ def rfid_loop():
 
 if __name__ == "__main__":
     threading.Thread(target=rfid_loop, daemon=True).start()
+    webbrowser.open("http://127.0.0.1:5000")
     socketio.run(app, port=5000, debug=True)

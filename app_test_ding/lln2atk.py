@@ -10,6 +10,8 @@ def get_authenticationtoken(llnum):
     except sqlite3.OperationalError as e:
         return str(e)
 
+'''
 lln = "08078"
 atoken = get_authenticationtoken(lln)
 print(atoken)
+'''
